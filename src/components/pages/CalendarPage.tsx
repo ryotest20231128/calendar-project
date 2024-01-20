@@ -32,11 +32,11 @@ export const CalendarPage = () => {
     const scheduleList = getScheduleList();
     scheduleList.forEach((schedule) => {
       const firstIndex = newDateList.findIndex((oneWeek) => {
-        oneWeek.some((item) => isSameDay(item.date, schedule.date));
+        return oneWeek.some((item) => isSameDay(item.date, schedule.date));
       });
       if (firstIndex === -1) return;
       const secondIndex = newDateList[firstIndex].findIndex((item) => {
-        isSameDay(item.date, schedule.date);
+        return isSameDay(item.date, schedule.date);
       });
 
       newDateList[firstIndex][secondIndex].schedules = [
